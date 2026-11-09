@@ -1,0 +1,46 @@
+/*
+ * Design tokens from Figma «phys-activity-tracking-app» (tracker/colors,
+ * tracker/dimensions, text styles). Accent: pink, the default since
+ * 2026-11-08. Light values from foundations/accent-colors-light.
+ */
+:root {
+  color-scheme: dark;
+  --bg: #161616;
+  --ink: #e9e9e9;
+  --accent: #ff719d;
+  --accent-mid: #c07e8f;
+  --accent-quiet: #5d484d;
+  --muted: #c6b1b6;
+  --on-accent: #161d1b;
+  --warn: #f2be56;
+  --surface: color-mix(in srgb, var(--accent) 5%, transparent);
+  --sunk: color-mix(in srgb, var(--accent) 10%, transparent);
+  --line: color-mix(in srgb, var(--accent) 85%, transparent);
+
+  --gap-nano: 2px;
+  --gap-micro: 4px;
+  --gap-items: 8px;
+  --gap-group: 16px;
+  --gap-section: 24px;
+  --gap-huge: 48px;
+  --pad-screen-top: 24px;
+  --pad-screen-x: 16px;
+  --tap: 48px;
+  --stroke-control: 1.3px;
+
+  --font: 'Noto Sans Mono', ui-monospace, 'DejaVu Sans Mono', monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f6f5f7;
+    --ink: #1a1a1a;
+    --accent: #c2396a;
+    --accent-mid: #b17081;
+    --accent-quiet: #ebd1d7;
+    --muted: #705e62;
+    --on-accent: #ffffff;
+    --warn: #8a5d00;
+  }
+}
