@@ -82,9 +82,21 @@ describe('links', () => {
     for (const link of links) expect(link.getAttribute('href')).toBe('%VITE_APP_URL%');
   });
 
+  it('opens the author profiles in a new tab without sending the referrer', () => {
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-author-link]')];
+    expect(links.map((a) => [a.textContent, a.getAttribute('href')])).toEqual([
+      ['linkedin', 'https://www.linkedin.com/in/kishtanovao/'],
+      ['behance', 'https://www.behance.net/7c29d01a'],
+    ]);
+    for (const link of links) {
+      expect(link.target).toBe('_blank');
+      expect(link.rel).toBe('noopener noreferrer');
+    }
+  });
+
   it('keeps buttons that lead nowhere yet inert', () => {
     const inert = [...document.querySelectorAll<HTMLButtonElement>('[aria-disabled="true"]')];
-    expect(inert.map((b) => b.textContent)).toEqual(['eng', 'залишити фідбек', 'linkedin', 'behance']);
+    expect(inert.map((b) => b.textContent)).toEqual(['eng', 'залишити фідбек']);
     for (const button of inert) {
       const event = new MouseEvent('click', { bubbles: true, cancelable: true });
       button.dispatchEvent(event);
